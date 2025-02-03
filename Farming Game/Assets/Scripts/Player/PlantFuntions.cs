@@ -1,23 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem; // Make sure to include this!
 
-public class PlantFuntions : MonoBehaviour
+public class PlantFunctions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool isWatering = false;
 
-    void OnWater()
-    {
-        Debug.Log("Water");
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (isWatering)
+        {
+            Debug.Log("Water");
+        }
+    }
+
+    void OnWater(InputValue value)
+    {
+        isWatering = value.isPressed;
     }
 }
