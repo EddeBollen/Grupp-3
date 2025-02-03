@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Move",
-                    "type": "Button",
-                    "id": "1838f033-0662-42a8-993f-d5cbcff9075d",
-                    "expectedControlType": "Button",
+                    "type": "Value",
+                    "id": "c8c1c887-23fe-4cba-a98a-d13908018cf7",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -38,30 +38,118 @@
                 },
                 {
                     "name": "",
-                    "id": "595128a2-ade2-4900-aefc-e3240b97479d",
+                    "id": "9eed2e15-8c6b-4447-8ac2-f5ad32780513",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "WASD",
+                    "id": "caee8d83-a64a-4461-9171-45d009893f4a",
+                    "path": "Dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "c87d8953-8722-469b-b425-4db0c22d2525",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "d9082308-b186-4217-9112-f3fbe92c88c1",
+                    "name": "up",
+                    "id": "0e7e00e9-242a-487d-be5e-a4cc39be2002",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "c30d2b90-e44d-4a43-b02b-ec4f53feb971",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "333b89d7-d397-4097-bfc3-8e55f4a2d50f",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "4b38fb48-7d68-48bf-9d57-76d8659cfc63",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "4b046d1a-de68-48e4-ae85-22e1cdc257f3",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "74adb4fb-5309-46ef-b745-262521067287",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "bf8cbd4f-1ed1-4329-8c56-3b1bb5df2f8d",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "e88307cc-e6dc-45e5-a159-42cb36ac352d",
-                    "path": "<Keyboard>/a",
+                    "id": "915075d6-8b7d-43ed-aa1d-c9137aeb8d25",
+                    "path": "<XRController>/{Primary2DAxis}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -71,8 +159,8 @@
                 },
                 {
                     "name": "",
-                    "id": "54b170d3-588d-4cfa-9c3a-cd93cab305f5",
-                    "path": "<Keyboard>/d",
+                    "id": "231a82ff-99ee-468c-b0ab-e34c0689f88f",
+                    "path": "<Joystick>/stick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
