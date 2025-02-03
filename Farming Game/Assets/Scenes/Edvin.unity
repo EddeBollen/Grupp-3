@@ -127,19 +127,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1015379970649059299, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
   m_PrefabInstance: {fileID: 997702993514474684}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1215484832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215484825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e1ae8bb768e7e44921ef93c7fda1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
 --- !u!114 &1215484833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +157,19 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerInput
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1215484834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215484825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d90b94f9c1d4a47aefe7b59773d9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!1 &1295642367
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,8 +400,7 @@ PrefabInstance:
       propertyPath: m_PlayerPrefab
       value: 
       objectReference: {fileID: 1015379970649059299, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
-    m_RemovedComponents:
-    - {fileID: 8479064728217596755, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -410,7 +409,7 @@ PrefabInstance:
       addedObject: {fileID: 1215484833}
     - targetCorrespondingSourceObject: {fileID: 1015379970649059299, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1215484832}
+      addedObject: {fileID: 1215484834}
   m_SourcePrefab: {fileID: 100100000, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
