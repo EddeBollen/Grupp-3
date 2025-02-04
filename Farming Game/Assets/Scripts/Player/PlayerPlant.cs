@@ -8,14 +8,8 @@ public class PlayerPlant : MonoBehaviour
     bool _isWatering = false;
     bool _isTouchingPlant = false;
 
-    void Start()
-    {
-        _isTouchingPlant = false;
-    }
-
     void OnWater(InputValue value)
     {
-
         _isWatering = value.isPressed;
 
         //if (canWater)
@@ -58,6 +52,10 @@ public class PlayerPlant : MonoBehaviour
         if (_isWatering)
         {
             //Debug.Log("Watering");
+            if (_isTouchingPlant)
+            {
+
+            }
         }
     }
 }
