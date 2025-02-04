@@ -9,9 +9,11 @@ public class PlayerMovement : MonoBehaviour
 {
     Vector2 moveInput;
     Rigidbody2D rb;
-    [SerializeField] float moveSpeed = 4f;
-    [SerializeField] float sprintSpeed = 7f;
+
+    [SerializeField] float moveSpeed = 3f;
+    [SerializeField] float sprintSpeed = 5f;
     bool isSprinting;
+    float currentSpeed;
 
     void Start()
     {
@@ -22,24 +24,8 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = value.Get<Vector2>();
     }
-
-    void OnRunning(InputValue value)
+    void Update()
     {
-        if (value.isPressed == true)
-        {
-            isSprinting = true;
-        }
-        else
-        {
-            isSprinting = false;
-        }
-    }
-
-    private void Update()
-    {
-        float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
-        rb.velocity = moveInput * currentSpeed;
-
         if (Input.GetKey(KeyCode.LeftShift))
         {
             isSprinting = true;
@@ -48,5 +34,16 @@ public class PlayerMovement : MonoBehaviour
         {
             isSprinting = false;
         }
+
+        if (isSprinting)
+        {
+            currentSpeed = sprintSpeed;
+        }
+        else
+        {
+            currentSpeed = moveSpeed;
+        }
+
+        rb.velocity = moveInput * currentSpeed;
     }
 }
