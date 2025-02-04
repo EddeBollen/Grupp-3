@@ -10,28 +10,46 @@ public class AnimalPatrol : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private Transform currentPoint;
+    private Transform currentTarget;
     public float speed;
+    private float dir = 1;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        currentPoint = PointB.transform;
+        currentPoint = PointA.transform;
         anim.SetBool("isRunning", true);
-       
-       
+        currentTarget = PointA.transform;
+
+
+
     }
 
     void Update()
     {
-        Vector2 point = currentPoint.position - transform.position;
-        if(currentPoint == PointB.transform)
+        rb.velocity = new Vector2(speed, 0) * dir;
+
+        //Vector2 point = currentPoint.position - transform.position;
+        if (currentTarget == PointA.transform && Vector2.Distance(transform.position, PointA.transform.position) < 0.3f)
         {
-            rb.velocity = new Vector2(speed, 0);
+            dir = -1;
+            currentTarget = PointB.transform;
         }
-        else
+        else if (currentTarget == PointB.transform && Vector2.Distance(transform.position, PointB.transform.position) < 0.3f)
         {
-            rb.velocity = new Vector2(-speed, 0);
+            dir = 1;
+            currentTarget = PointA.transform;
         }
+
+        //Vector2 point = currentPoint.position - transform.position;
+        //if(Vector2.Distance(transform.position, PointB.transform.position) < 0.1f)
+        //{
+        //    rb.velocity = new Vector2(speed, 0);
+        //}
+        //else
+        //{
+        //    rb.velocity = new Vector2(-speed, 0);
+        //}
 
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointB.transform)
         {
