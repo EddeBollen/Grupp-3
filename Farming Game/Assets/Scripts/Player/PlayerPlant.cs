@@ -5,13 +5,18 @@ using UnityEngine.InputSystem; // Required for new Input System
 public class PlayerPlant : MonoBehaviour
 {
     [SerializeField] float cooldown = 2;
-    bool isWatering = false;
-    bool isTouchingPlant = false;
+    bool _isWatering = false;
+    bool _isTouchingPlant = false;
+
+    void Start()
+    {
+        _isTouchingPlant = false;
+    }
 
     void OnWater(InputValue value)
     {
 
-        isWatering = value.isPressed;
+        _isWatering = value.isPressed;
 
         //if (canWater)
         //{
@@ -21,12 +26,12 @@ public class PlayerPlant : MonoBehaviour
 
     private IEnumerator WaterRoutine()
     {
-        isWatering = true;
+        _isWatering = true;
         Debug.Log("Watering");
 
         yield return new WaitForSeconds(cooldown); // Wait for 5 seconds
 
-        isWatering = false;
+        _isWatering = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,7 +39,7 @@ public class PlayerPlant : MonoBehaviour
         if (collision.gameObject.CompareTag("Plant"))
         {
             Debug.Log("Touched plant!");
-            isTouchingPlant = true;
+            _isTouchingPlant = true;
         }
     }
 
@@ -43,14 +48,14 @@ public class PlayerPlant : MonoBehaviour
         if (collision.gameObject.CompareTag("Plant"))
         {
             Debug.Log("Plant left!");
-            isTouchingPlant = false;
+            _isTouchingPlant = false;
         }
     }
 
     private void Update()
     {
         // You can add additional logic here if needed
-        if (isWatering)
+        if (_isWatering)
         {
             //Debug.Log("Watering");
         }
