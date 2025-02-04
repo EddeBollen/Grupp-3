@@ -5,8 +5,22 @@ using UnityEngine.InputSystem; // Required for new Input System
 public class PlayerPlant : MonoBehaviour
 {
     [SerializeField] float cooldown = 2;
+    
+
+    GameObject _plantObject;
+    
     bool _isWatering = false;
     bool _isTouchingPlant = false;
+
+    public bool GetWatering()
+    {
+        return _isWatering;
+    }
+
+    public bool GetPlantTouch()
+    {
+        return _isTouchingPlant;
+    }
 
     void OnWater(InputValue value)
     {
@@ -32,8 +46,8 @@ public class PlayerPlant : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Plant"))
         {
-            Debug.Log("Touched plant!");
             _isTouchingPlant = true;
+            _plantObject = collision.gameObject;
         }
     }
 
@@ -41,21 +55,29 @@ public class PlayerPlant : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Plant"))
         {
-            Debug.Log("Plant left!");
             _isTouchingPlant = false;
+            _plantObject = null;
         }
+    }
+
+    void GrowPlant(GameObject plant)
+    {
+        Vector2 newSize = new Vector2(plant.transform.localScale.x, plant.transform.localScale.y * 1.001f);
+        plant.transform.localScale = newSize;
     }
 
     private void Update()
     {
-        // You can add additional logic here if needed
+        //You can add additional logic here if needed
         if (_isWatering)
         {
             //Debug.Log("Watering");
-            if (_isTouchingPlant)
-            {
 
+            if (_plantObject)
+            {
+                //GrowPlant(_plantObject); //UNCOMMENT FOR EXECUTION OF GROWPLANT
             }
-        }
+        }   
+            
     }
 }

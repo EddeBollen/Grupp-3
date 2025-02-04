@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 276930085}
   - component: {fileID: 276930084}
+  - component: {fileID: 276930087}
   - component: {fileID: 276930086}
   m_Layer: 0
   m_Name: Plant test
@@ -201,9 +202,9 @@ Transform:
   m_GameObject: {fileID: 276930083}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.98, y: -0.7, z: 0}
-  m_LocalScale: {x: 0.89393, y: 0.29315367, z: 0.89393}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -1.8800814, y: -0.5729153, z: 0}
+  m_LocalScale: {x: 0.89393, y: 0.33499756, z: 0.89393}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -242,6 +243,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.0000001, y: 1.9999999}
   m_Direction: 0
+--- !u!114 &276930087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276930083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a421cf6f0274774dbf38359cdbe41ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantStages:
+  - {fileID: -1620700287, guid: f6af29bfa6ce9cd459413fe5adf8181d, type: 3}
+  - {fileID: 1458565069, guid: f6af29bfa6ce9cd459413fe5adf8181d, type: 3}
+  - {fileID: 1617431709, guid: f6af29bfa6ce9cd459413fe5adf8181d, type: 3}
+  currentWater: 0
 --- !u!1 &593310873 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015379970649059299, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
