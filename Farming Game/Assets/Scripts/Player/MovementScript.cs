@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
         rb.velocity = moveInput * currentSpeed;
-        Debug.Log(isSprinting);
+        //Debug.Log(isSprinting);
     }
 
 }
