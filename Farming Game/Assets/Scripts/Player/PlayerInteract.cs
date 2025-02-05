@@ -13,6 +13,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] GameObject playerObject;
     Collider2D hit;
     public AudioSource audioSource;
+
     void OnInteract()
     {
         if (hit != null)
@@ -32,6 +33,11 @@ public class PlayerInteract : MonoBehaviour
     void OnFire()
     {
         CalcGrid(mousePos);
+
+        if (hit != null)
+        {
+            Destroy(hit.gameObject);
+        }
     }
 
     Vector2 CalcGrid(Vector3 instance)
