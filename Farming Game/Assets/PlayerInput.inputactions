@@ -51,9 +51,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Running",
+                    "name": "Sprint",
                     "type": "Button",
                     "id": "6e49a4cf-b89d-4fb8-8ce5-a51a79dae12f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Harvest",
+                    "type": "Button",
+                    "id": "b24f5c21-a5c0-4409-a73d-1c694af7b649",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -321,7 +330,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Running",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36f56c67-af1f-4c3f-a78f-08fdf04da748",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Harvest",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
