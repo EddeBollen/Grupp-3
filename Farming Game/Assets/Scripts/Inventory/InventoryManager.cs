@@ -18,6 +18,7 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        inventoryGroup.SetActive(false);
     }
 
     private void Start()
