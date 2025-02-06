@@ -6014,10 +6014,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryGroup: {fileID: 490192618}
   startItems:
+  - {fileID: 11400000, guid: a755099e5f0312b4ca994f6a27d17978, type: 2}
+  - {fileID: 11400000, guid: 3ef0757fbf163f448aa9715e6190fd1c, type: 2}
   - {fileID: 11400000, guid: 1c0148378c09ccd4cb2db0decb735f92, type: 2}
   - {fileID: 11400000, guid: dd6c9246e7a01cf4487d55219b0e199c, type: 2}
-  - {fileID: 11400000, guid: 3ef0757fbf163f448aa9715e6190fd1c, type: 2}
-  - {fileID: 11400000, guid: a755099e5f0312b4ca994f6a27d17978, type: 2}
+  - {fileID: 11400000, guid: c152e20d70edf6045b771c408a48d5c9, type: 2}
   maxStackedItems: 64
   inventorySlots:
   - {fileID: 1219254126}
