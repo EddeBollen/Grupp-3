@@ -16,7 +16,9 @@ public class MainPlantScript : MonoBehaviour
     private bool _isWatering = false;
     private bool _plantWatered = false;
     private bool _playerHarvest = false;
+    public bool _playerPlanted = false;
 
+    public bool _plantPlanted = false;
     public bool _plantGrowing = false;
     public bool _plantGrown = false;
 
@@ -38,27 +40,39 @@ public class MainPlantScript : MonoBehaviour
             _isTouchingPlant = playerPlantScript.GetPlantTouch();
             _isWatering = playerPlantScript.GetWatering();
             _playerHarvest = playerPlantScript.GetHarvest();
+            _playerPlanted = playerPlantScript.GetPlantAction();
         }
 
-        if (_isTouchingPlant && _isWatering && !_plantWatered)
+        if (_isTouchingPlant)
         {
-            StartCoroutine(WaterPlantRoutine());
-            spriteRenderer.color = Color.blue;
-            _plantWatered = true; // Start growing automatically after watering
-            _plantGrowing = true;
-        }
+            if (_playerHarvest && _plantGrown)
+            {
+                _plantWatered = false;
+                _plantGrown = false;
+                _plantPlanted = false;
 
-        if (_playerHarvest && _isTouchingPlant && _plantGrown)
-        {
-            _plantWatered = false;
-            _plantGrown = false;
+                currentStage = -1;
 
-            currentStage = -1;
+                spriteRenderer.color = Color.black;
+                spriteRenderer.sprite = defaultPlant;
 
-            spriteRenderer.sprite = defaultPlant;
-            spriteRenderer.color = Color.grey;
+                Debug.Log("Player harvested plant");
+            }
 
-            Debug.Log("Player harvested plant");
+            if (_plantPlanted == false && _playerPlanted)
+            {
+                spriteRenderer.color = Color.grey;
+
+                _plantPlanted = true;
+            }
+
+            if (_isWatering && !_plantWatered && _plantPlanted)
+            {
+                StartCoroutine(WaterPlantRoutine());
+                spriteRenderer.color = Color.blue;
+                _plantWatered = true; // Start growing automatically after watering
+                _plantGrowing = true;
+            }
         }
 
         if (_plantGrowing && currentStage == plantStages.Length - 1)

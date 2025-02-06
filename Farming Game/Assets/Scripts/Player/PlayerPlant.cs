@@ -12,6 +12,7 @@ public class PlayerPlant : MonoBehaviour
     bool _isWatering = false;
     bool _isTouchingPlant = false;
     bool _plantHarvested = false;
+    bool _playerPlanted = false;
 
     private void Start()
     {
@@ -33,6 +34,10 @@ public class PlayerPlant : MonoBehaviour
         return _plantHarvested;
     }
 
+    public bool GetPlantAction()
+    {
+        return _playerPlanted;
+    }
     void OnWater(InputValue value)
     {
         _isWatering = value.isPressed;
@@ -47,6 +52,26 @@ public class PlayerPlant : MonoBehaviour
     {
         _plantHarvested = value.isPressed;
     }
+
+    void OnPlant(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            StartCoroutine(PlantRoutine());
+        }
+    }
+
+    private IEnumerator PlantRoutine()
+    {
+        _playerPlanted = true;
+        Debug.Log("Planted!");
+
+        yield return new WaitForSeconds(0.5f);
+
+        _playerPlanted = false;
+        Debug.Log("Plant action reset!");
+    }
+
 
     private IEnumerator WaterRoutine()
     {
@@ -84,6 +109,7 @@ public class PlayerPlant : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(_playerPlanted);
         //You can add additional logic here if needed
         if (_isWatering)
         {
