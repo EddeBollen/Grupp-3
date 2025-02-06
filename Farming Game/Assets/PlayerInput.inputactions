@@ -71,7 +71,7 @@
                 {
                     "name": "Plant",
                     "type": "Button",
-                    "id": "9555cdf8-b6cc-44cf-b243-116a2c34bb19",
+                    "id": "a829b14f-fa98-4d21-8f25-218017f57df1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -356,11 +356,11 @@
                 },
                 {
                     "name": "",
-                    "id": "ddf318a4-d849-4f87-89b3-bcc1d9995d4e",
+                    "id": "8f3bcb44-9cd0-4dc6-9171-bf9a3aa0ef29",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "",
                     "action": "Plant",
                     "isComposite": false,
                     "isPartOfComposite": false
