@@ -65,6 +65,15 @@
                     "id": "b24f5c21-a5c0-4409-a73d-1c694af7b649",
                     "expectedControlType": "Button",
                     "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Plant",
+                    "type": "Button",
+                    "id": "a829b14f-fa98-4d21-8f25-218017f57df1",
+                    "expectedControlType": "Button",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 }
@@ -342,6 +351,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Harvest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f3bcb44-9cd0-4dc6-9171-bf9a3aa0ef29",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Plant",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

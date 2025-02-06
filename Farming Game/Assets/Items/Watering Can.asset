@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ec524c2cf91a4e4f872ee242332a7af, type: 3}
-  m_Name: Hoe
+  m_Name: Watering Can
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
   type: 1
-  actionType: 2
+  actionType: 3
   range: {x: 5, y: 4}
-  stackable: 0
-  image: {fileID: 21300000, guid: 49f2ddad82af60f44b8138a257f993cd, type: 3}
+  stackable: 1
+  image: {fileID: 21300000, guid: d470ffdaeb5fc6c4ba34616e63b18a1f, type: 3}

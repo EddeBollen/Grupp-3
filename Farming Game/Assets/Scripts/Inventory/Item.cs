@@ -28,5 +28,10 @@ public enum ItemType
 
 public enum ActionType
 {
-    Use
+    Mine,
+    Chop,
+    Till,
+    Water,
+    Attack,
+    Dig
 }
