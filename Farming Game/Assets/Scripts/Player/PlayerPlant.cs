@@ -11,6 +11,12 @@ public class PlayerPlant : MonoBehaviour
     
     bool _isWatering = false;
     bool _isTouchingPlant = false;
+    bool _plantHarvested = false;
+
+    private void Start()
+    {
+        
+    }
 
     public bool GetWatering()
     {
@@ -22,6 +28,11 @@ public class PlayerPlant : MonoBehaviour
         return _isTouchingPlant;
     }
 
+    public bool GetHarvest()
+    {
+        return _plantHarvested;
+    }
+
     void OnWater(InputValue value)
     {
         _isWatering = value.isPressed;
@@ -30,6 +41,11 @@ public class PlayerPlant : MonoBehaviour
         //{
         //    StartCoroutine(WaterRoutine());
         //}
+    }
+
+    void OnHarvest(InputValue value)
+    {
+        _plantHarvested = value.isPressed;
     }
 
     private IEnumerator WaterRoutine()

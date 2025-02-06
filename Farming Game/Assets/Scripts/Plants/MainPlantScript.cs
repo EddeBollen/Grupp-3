@@ -4,25 +4,28 @@ using UnityEngine;
 public class MainPlantScript : MonoBehaviour
 {
     [SerializeField] private Sprite[] plantStages;
+    [SerializeField] Sprite defaultPlant;
 
     private SpriteRenderer spriteRenderer;
-    private PlayerPlant playerPlant;
+    private PlayerPlant playerPlantScript;
 
     public float currentWater = 0;
-    private float waterMin = 5f;
-    private float waterMax = 18f;
     private int currentStage = -1;
 
     private bool _isTouchingPlant;
     private bool _isWatering = false;
     private bool _plantWatered = false;
+    private bool _playerHarvest = false;
+
+    public bool _plantGrowing = false;
+    public bool _plantGrown = false;
 
     private void Start()
     {
-        playerPlant = FindObjectOfType<PlayerPlant>();
+        playerPlantScript = FindObjectOfType<PlayerPlant>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (playerPlant == null)
+        if (playerPlantScript == null)
         {
             Debug.LogError("PlayerPlant script not found in the scene!");
         }
@@ -30,10 +33,11 @@ public class MainPlantScript : MonoBehaviour
 
     void Update()
     {
-        if (playerPlant != null)
+        if (playerPlantScript != null)
         {
-            _isTouchingPlant = playerPlant.GetPlantTouch();
-            _isWatering = playerPlant.GetWatering();
+            _isTouchingPlant = playerPlantScript.GetPlantTouch();
+            _isWatering = playerPlantScript.GetWatering();
+            _playerHarvest = playerPlantScript.GetHarvest();
         }
 
         if (_isTouchingPlant && _isWatering && !_plantWatered)
@@ -41,6 +45,29 @@ public class MainPlantScript : MonoBehaviour
             StartCoroutine(WaterPlantRoutine());
             spriteRenderer.color = Color.blue;
             _plantWatered = true; // Start growing automatically after watering
+            _plantGrowing = true;
+        }
+
+        if (_playerHarvest && _isTouchingPlant && _plantGrown)
+        {
+            _plantWatered = false;
+            _plantGrown = false;
+
+            currentStage = -1;
+
+            spriteRenderer.sprite = defaultPlant;
+            spriteRenderer.color = Color.grey;
+
+            Debug.Log("Player harvested plant");
+        }
+
+        if (_plantGrowing && currentStage == plantStages.Length - 1)
+        {
+            _plantGrown = true;
+            _plantGrowing = false;
+
+            Debug.Log("Plant has fully grown! Current stage: " + currentStage);
+            CancelInvoke(nameof(GrowPlantRoutine)); // Stop growing
         }
     }
 
@@ -65,8 +92,9 @@ public class MainPlantScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Plant has fully grown! Current stage: " + currentStage);
-            CancelInvoke(nameof(GrowPlantRoutine)); // Stop growing
+            //_plantGrown = true;
+            //Debug.Log("Plant has fully grown! Current stage: " + currentStage);
+            //CancelInvoke(nameof(GrowPlantRoutine)); // Stop growing
         }
     }
 
