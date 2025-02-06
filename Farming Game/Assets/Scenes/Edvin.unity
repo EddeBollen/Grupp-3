@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1215484839}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 7.7
@@ -446,13 +446,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d90b94f9c1d4a47aefe7b59773d9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  sprintSpeed: 4
---- !u!4 &1215484839 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6334565328728461335, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
-  m_PrefabInstance: {fileID: 997702993514474684}
-  m_PrefabAsset: {fileID: 0}
+  moveSpeed: 3
+  sprintSpeed: 6
+  maxStamina: 5
+  staminaDrainRate: 0.8
+  staminaRegenRate: 0.5
 --- !u!82 &1215484845
 AudioSource:
   m_ObjectHideFlags: 0
