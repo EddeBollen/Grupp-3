@@ -5,22 +5,22 @@ public class MainPlantScript : MonoBehaviour
 {
     [SerializeField] private Sprite[] plantStages;
 
-    private SpriteRenderer spriteRenderer; // Reference to the sprite
+    private SpriteRenderer spriteRenderer;
     private PlayerPlant playerPlant;
 
     public float currentWater = 0;
     private float waterMin = 5f;
     private float waterMax = 18f;
-    private bool canIncreaseWater = true;
-    private int currentStage = 0; // Track which stage we're in
+    private int currentStage = -1;
 
     private bool _isTouchingPlant;
-    private bool _isWatering;
+    private bool _isWatering = false;
+    private bool _plantWatered = false;
 
     private void Start()
     {
         playerPlant = FindObjectOfType<PlayerPlant>();
-        spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (playerPlant == null)
         {
@@ -36,47 +36,46 @@ public class MainPlantScript : MonoBehaviour
             _isWatering = playerPlant.GetWatering();
         }
 
-        if (_isTouchingPlant && _isWatering && canIncreaseWater)
+        if (_isTouchingPlant && _isWatering && !_plantWatered)
         {
             StartCoroutine(WaterPlantRoutine());
+            spriteRenderer.color = Color.blue;
+            _plantWatered = true; // Start growing automatically after watering
         }
-
-        UpdatePlantStage(); // Check if plant should evolve
     }
 
     private IEnumerator WaterPlantRoutine()
     {
-        canIncreaseWater = false; // Prevents immediate re-execution
         currentWater++;
-        Debug.Log("Current water: " + currentWater);
-
-        yield return new WaitForSeconds(1f); // Wait 1 second before allowing another increase
-
-        canIncreaseWater = true; // Re-enable watering
+        yield return new WaitForSeconds(1f); // Simulate watering time
+        StartGrowth(); // Begin the slow growth process
     }
 
-    private void UpdatePlantStage()
+    private void StartGrowth()
     {
-        if (currentWater >= waterMin && currentStage == 0)
+        Debug.Log("Plant will now start growing...");
+        InvokeRepeating(nameof(GrowPlantRoutine), 2f, 3f); // Grow every 3 seconds
+    }
+
+    private void GrowPlantRoutine()
+    {
+        if (currentStage < plantStages.Length - 1) // Prevent out-of-bounds error
         {
-            ChangePlantStage(1); // Second plant stage
+            ChangePlantStage(currentStage + 1);
         }
-        else if (currentWater >= waterMax / 2 && currentStage == 1)
+        else
         {
-            ChangePlantStage(2); // Third plant stage
-        }
-        else if (currentWater >= waterMax && currentStage == 2)
-        {
-            ChangePlantStage(3); // Final plant stage
+            Debug.Log("Plant has fully grown! Current stage: " + currentStage);
+            CancelInvoke(nameof(GrowPlantRoutine)); // Stop growing
         }
     }
 
     private void ChangePlantStage(int newStage)
     {
-        if (newStage >= plantStages.Length) return; // Prevent out-of-bounds error
+        if (newStage >= plantStages.Length) return;
 
-        spriteRenderer.sprite = plantStages[newStage]; // Change sprite
-        currentStage = newStage; // Update stage tracker
+        spriteRenderer.sprite = plantStages[newStage];
+        currentStage = newStage;
         Debug.Log("Plant evolved to stage: " + newStage);
     }
 }

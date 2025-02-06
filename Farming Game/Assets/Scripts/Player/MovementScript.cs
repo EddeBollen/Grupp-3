@@ -1,24 +1,25 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
-public class PlayerMovement : MonoBehaviour
+public class MovementScript : MonoBehaviour
 {
     Vector2 moveInput;
     Rigidbody2D rb;
 
     [SerializeField] float moveSpeed = 3f;
     [SerializeField] float sprintSpeed = 5f;
-    [SerializeField] float maxStamina = 5f;
+    [SerializeField] float maxStamina = 7f;
     [SerializeField] float staminaDrainRate = 1f;
-    [SerializeField] float staminaRegenRate = 0.5f;
-
+    [SerializeField] float staminaRegenRate = 1f;
+  
     bool isSprinting;
+    public float currentStamina;
     float currentSpeed;
-    float currentStamina;
+   
 
     void Start()
     {
@@ -30,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = value.Get<Vector2>();
     }
-    void Update()
+
+    private void Update()
     {
         if (isSprinting)
         {
@@ -67,9 +69,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
-
         rb.velocity = moveInput * currentSpeed;
-
-      
+        
+        if (currentStamina == 0)
+        {
+            Debug.Log("stamina was drained!");
+        }
     }
 }
