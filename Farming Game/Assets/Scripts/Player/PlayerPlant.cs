@@ -109,7 +109,6 @@ public class PlayerPlant : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_playerPlanted);
         //You can add additional logic here if needed
         if (_isWatering)
         {
