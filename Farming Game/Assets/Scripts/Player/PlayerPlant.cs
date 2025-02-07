@@ -15,7 +15,7 @@ public class PlayerPlant : MonoBehaviour
     bool _playerPlanted = false;
     bool _playerTilling = false;
 
-    public Item item;
+    Item item;
 
     private void Start()
     {
@@ -110,33 +110,39 @@ public class PlayerPlant : MonoBehaviour
     {
         item = InventoryManager.instance.GetSelectedItem(false);
 
-        if (item.actionType == ActionType.Water) // If you hold something that can water
-        { 
-            if (Input.GetMouseButton(0))
+        if (item)
+        {
+            if (item.actionType == ActionType.Water) // If you hold something that can water
             {
-                _isWatering = true;
-            } else if (Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButton(0))
+                {
+                    _isWatering = true;
+                }
+                else if (Input.GetMouseButtonUp(0))
+                {
+                    _isWatering = false;
+                }
+            }
+            else
             {
                 _isWatering = false;
             }
-        }
-        else
-        {
-            _isWatering = false;
-        }
 
-        if (item.actionType == ActionType.Till)
-        {
-            if (Input.GetMouseButton(0))
+            if (item.actionType == ActionType.Till)
             {
-                _playerTilling = true;
-            } else if (Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButton(0))
+                {
+                    _playerTilling = true;
+                }
+                else if (Input.GetMouseButtonUp(0))
+                {
+                    _playerTilling = false;
+                }
+            }
+            else
             {
                 _playerTilling = false;
             }
-        } else
-        {
-            _playerTilling = false;
         }
     }
 }
