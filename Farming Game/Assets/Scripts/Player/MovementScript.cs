@@ -70,10 +70,22 @@ public class MovementScript : MonoBehaviour
 
         currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
         rb.velocity = moveInput * currentSpeed;
-        
-        if (currentStamina == 0)
+
+        if (currentStamina < 1)
         {
             Debug.Log("stamina was drained!");
+        }
+        else if (currentStamina < maxStamina * 0.2f)
+        {
+            Debug.Log("Stamina is running low");
+        }
+        else if (currentStamina == maxStamina)
+        {
+            Debug.Log("Stamina is full");
+        }
+        else
+        {
+            Debug.Log("stamina is left");
         }
     }
 }
