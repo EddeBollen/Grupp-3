@@ -24400,9 +24400,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   sprintSpeed: 5
-  maxStamina: 10
-  staminaDrainRate: 1
   staminaRegenRate: 0.5
+  staminaDrainRate: 1
+  maxStamina: 7
   currentStamina: 0
 --- !u!82 &1215484845
 AudioSource:

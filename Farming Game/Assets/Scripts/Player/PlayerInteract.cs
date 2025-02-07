@@ -27,5 +27,13 @@ public class PlayerInteract : MonoBehaviour
     private void Update()
     {
         Item item = InventoryManager.instance.GetSelectedItem(false);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (item.type == ItemType.BuildingBlock)
+            {
+                Instantiate(item.gameObject, gridSystem.CalcGrid(gridSystem.mousePos), Quaternion.identity);
+            }
+        }
     }
 }

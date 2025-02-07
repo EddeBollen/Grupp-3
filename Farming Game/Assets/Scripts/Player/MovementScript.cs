@@ -1,9 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.Rendering.DebugUI;
 
 public class MovementScript : MonoBehaviour
 {
@@ -12,15 +12,13 @@ public class MovementScript : MonoBehaviour
 
     [SerializeField] float moveSpeed = 3f;
     [SerializeField] float sprintSpeed = 5f;
-    [SerializeField] float maxStamina = 7f;
-    [SerializeField] float staminaDrainRate = 1f;
     [SerializeField] float staminaRegenRate = 1f;
-  
+    [SerializeField] float staminaDrainRate = 1f;
+    [SerializeField] float maxStamina = 7;
     bool isSprinting;
-    public float currentStamina;
     float currentSpeed;
-   
-
+    public float currentStamina;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,24 +29,14 @@ public class MovementScript : MonoBehaviour
     {
         moveInput = value.Get<Vector2>();
     }
-
-    private void Update()
+    void Update()
     {
-        if (isSprinting)
-        {
-            currentSpeed = sprintSpeed;
-        }
-        else
-        {
-            currentSpeed = moveSpeed;
-        }
-
         if (currentStamina < 1)
         {
             currentSpeed = moveSpeed;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 1)
         {
             isSprinting = true;
             currentStamina -= staminaDrainRate * Time.deltaTime;
@@ -69,12 +57,12 @@ public class MovementScript : MonoBehaviour
         }
 
         currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
-        rb.velocity = moveInput * currentSpeed;
 
-        if (currentStamina < 1)
+
+        if (isSprinting)
         {
-            Debug.Log("stamina was drained!");
-        }
+            currentSpeed = moveSpeed;
+        } 
         else if (currentStamina < maxStamina * 0.2f)
         {
             Debug.Log("Stamina is running low");
@@ -86,6 +74,9 @@ public class MovementScript : MonoBehaviour
         else
         {
             Debug.Log("stamina is left");
+            currentSpeed = moveSpeed;
         }
+
+        rb.velocity = moveInput * currentSpeed;
     }
 }

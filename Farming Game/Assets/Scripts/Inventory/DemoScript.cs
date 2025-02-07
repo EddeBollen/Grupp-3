@@ -51,17 +51,7 @@ public class DemoScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            PickupItem(0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            PickupItem(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            PickupItem(2);
+            PickupItem(5);
         }
 
         if (Input.GetKeyDown(KeyCode.K))

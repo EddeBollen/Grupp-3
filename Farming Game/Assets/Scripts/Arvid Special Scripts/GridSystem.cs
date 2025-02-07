@@ -7,15 +7,15 @@ using UnityEngine.InputSystem;
 
 public class GridSystem : MonoBehaviour
 {
-    public Vector2 gridPosition;
+    public Vector3 gridPosition;
     public Vector2 mousePos;
     public float gridDistance;
     [SerializeField] public GameObject playerObject;
     public Collider2D hovering;
 
-    public Vector2 CalcGrid(Vector3 instance)
+    public Vector3 CalcGrid(Vector3 instance)
     {
-        gridPosition = new Vector2(Mathf.Round(instance.x), Mathf.Round(instance.y));
+        gridPosition = new Vector3(Mathf.Round(instance.x), Mathf.Round(instance.y), -1f);
         Debug.Log(gridPosition);
         return gridPosition;
     }

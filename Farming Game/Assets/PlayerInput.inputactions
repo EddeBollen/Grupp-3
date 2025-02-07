@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Water",
-                    "type": "Button",
-                    "id": "ae4da4aa-d07e-4c3b-90a1-d1fe7ddb4e55",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=2)",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Sprint",
                     "type": "Button",
                     "id": "6e49a4cf-b89d-4fb8-8ce5-a51a79dae12f",
@@ -318,17 +309,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7d5d1af9-b664-46fe-9b91-156cc4de14db",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Water",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
