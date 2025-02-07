@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,9 +9,11 @@ public class PlayerMovement : MonoBehaviour
 {
     Vector2 moveInput;
     Rigidbody2D rb;
-    [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float sprintSpeed = 9f;
+
+    [SerializeField] float moveSpeed = 3f;
+    [SerializeField] float sprintSpeed = 5f;
     bool isSprinting;
+    float currentSpeed;
 
     void Start()
     {
@@ -21,17 +24,26 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = value.Get<Vector2>();
     }
-
-    void OnRunning(InputValue value)
+    void Update()
     {
-        isSprinting = value.isPressed;
-    }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isSprinting = true;
+        }
+        else
+        {
+            isSprinting = false;
+        }
 
-    private void Update()
-    {
-        float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
+        if (isSprinting)
+        {
+            currentSpeed = sprintSpeed;
+        }
+        else
+        {
+            currentSpeed = moveSpeed;
+        }
+
         rb.velocity = moveInput * currentSpeed;
-        //Debug.Log(isSprinting);
     }
-
 }
