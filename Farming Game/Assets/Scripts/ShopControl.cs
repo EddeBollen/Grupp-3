@@ -23,6 +23,17 @@ public class ShopControl : MonoBehaviour
     {
         moneyAmountText.text = "Money: " + moneyAmount.ToString() + "$";
 
+        isAxeSold = PlayerPrefs.GetInt("isAxeSold");
+
+        if (moneyAmount > 5 && isAxeSold == 0)
+        {
+            buyButton.interactable = true;
+        }
+
+    }
+    public void buyAxe()
+    {
+        moneyAmount -= 5;
 
     }
 }
