@@ -304,6 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 960939252}
   - component: {fileID: 960939253}
+  - component: {fileID: 960939254}
   m_Layer: 0
   m_Name: Camera follow
   m_TagString: Untagged
@@ -346,7 +347,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1215484839}
+  m_Follow: {fileID: 1215484850}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 7.7
@@ -366,6 +367,23 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 469888463}
+--- !u!114 &960939254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960939251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388c331d92088c54ea0b9f36f6b0da8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementScript: {fileID: 1215484834}
+  virtualCamera: {fileID: 960939253}
+  normalSize: 5
+  zoomedSize: 6
+  zoomSpeed: 10
 --- !u!1 &1096353766
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,13 +464,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d90b94f9c1d4a47aefe7b59773d9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  sprintSpeed: 4
---- !u!4 &1215484839 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6334565328728461335, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
-  m_PrefabInstance: {fileID: 997702993514474684}
-  m_PrefabAsset: {fileID: 0}
+  moveSpeed: 3
+  sprintSpeed: 6
+  maxStamina: 10
+  staminaDrainRate: 1
+  staminaRegenRate: 0.5
+  currentStamina: 0
 --- !u!82 &1215484845
 AudioSource:
   m_ObjectHideFlags: 0
@@ -549,6 +566,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &1215484850 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6334565328728461335, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
+  m_PrefabInstance: {fileID: 997702993514474684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1295642367
 GameObject:
   m_ObjectHideFlags: 0
