@@ -13,6 +13,9 @@ public class PlayerPlant : MonoBehaviour
     bool _isTouchingPlant = false;
     bool _plantHarvested = false;
     bool _playerPlanted = false;
+    bool _playerTilling = false;
+
+    public Item item;
 
     private void Start()
     {
@@ -38,14 +41,10 @@ public class PlayerPlant : MonoBehaviour
     {
         return _playerPlanted;
     }
-    void OnWater(InputValue value)
-    {
-        _isWatering = value.isPressed;
 
-        //if (canWater)
-        //{
-        //    StartCoroutine(WaterRoutine());
-        //}
+    public bool GetTill()
+    {
+        return _playerTilling;
     }
 
     void OnHarvest(InputValue value)
@@ -109,16 +108,35 @@ public class PlayerPlant : MonoBehaviour
 
     private void Update()
     {
-        //You can add additional logic here if needed
-        if (_isWatering)
-        {
-            //Debug.Log("Watering");
+        item = InventoryManager.instance.GetSelectedItem(false);
 
-            if (_plantObject)
+        if (item.actionType == ActionType.Water) // If you hold something that can water
+        { 
+            if (Input.GetMouseButton(0))
             {
-                //GrowPlant(_plantObject); //UNCOMMENT FOR EXECUTION OF GROWPLANT
+                _isWatering = true;
+            } else if (Input.GetMouseButtonUp(0))
+            {
+                _isWatering = false;
             }
-        }   
-            
+        }
+        else
+        {
+            _isWatering = false;
+        }
+
+        if (item.actionType == ActionType.Till)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                _playerTilling = true;
+            } else if (Input.GetMouseButtonUp(0))
+            {
+                _playerTilling = false;
+            }
+        } else
+        {
+            _playerTilling = false;
+        }
     }
 }

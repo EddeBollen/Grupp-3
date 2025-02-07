@@ -14,10 +14,12 @@ public class MainPlantScript : MonoBehaviour
 
     private bool _isTouchingPlant;
     private bool _isWatering = false;
+    private bool _playerTilled = false;
     private bool _plantWatered = false;
     private bool _playerHarvest = false;
     public bool _playerPlanted = false;
 
+    public bool _plantTilled = false;
     public bool _plantPlanted = false;
     public bool _plantGrowing = false;
     public bool _plantGrown = false;
@@ -39,6 +41,7 @@ public class MainPlantScript : MonoBehaviour
         {
             _isTouchingPlant = playerPlantScript.GetPlantTouch();
             _isWatering = playerPlantScript.GetWatering();
+            _playerTilled = playerPlantScript.GetTill();
             _playerHarvest = playerPlantScript.GetHarvest();
             _playerPlanted = playerPlantScript.GetPlantAction();
         }
@@ -50,6 +53,7 @@ public class MainPlantScript : MonoBehaviour
                 _plantWatered = false;
                 _plantGrown = false;
                 _plantPlanted = false;
+                _plantTilled = false;
 
                 currentStage = -1;
 
@@ -59,9 +63,16 @@ public class MainPlantScript : MonoBehaviour
                 Debug.Log("Player harvested plant");
             }
 
-            if (_plantPlanted == false && _playerPlanted)
+            if (_plantTilled == false && _playerTilled)
             {
-                spriteRenderer.color = Color.grey;
+                spriteRenderer.color = Color.gray;
+                
+                _plantTilled = true;
+            }
+
+            if (_plantPlanted == false && _playerPlanted && _plantTilled)
+            {
+                spriteRenderer.color = Color.green;
 
                 _plantPlanted = true;
             }
