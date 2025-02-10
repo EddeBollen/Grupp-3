@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class AnimalPatrol : MonoBehaviour
 {
+    System.Random rnd = new System.Random();
+
+    int randomTime;
+
     public GameObject PointA;
     public GameObject PointB;
     private Rigidbody2D rb;
@@ -13,6 +18,9 @@ public class AnimalPatrol : MonoBehaviour
     private Transform currentTarget;
     public float speed;
     private float dir = 1;
+
+    bool isWaiting = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,47 +35,49 @@ public class AnimalPatrol : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = new Vector2(speed, 0) * dir;
-
-        //Vector2 point = currentPoint.position - transform.position;
-        if (currentTarget == PointA.transform && Vector2.Distance(transform.position, PointA.transform.position) < 0.3f)
+        if (!isWaiting)
         {
-            dir = -1;
-            currentTarget = PointB.transform;
-        }
-        else if (currentTarget == PointB.transform && Vector2.Distance(transform.position, PointB.transform.position) < 0.3f)
-        {
-            dir = 1;
-            currentTarget = PointA.transform;
+            rb.velocity = new Vector2(speed * dir, 0);
         }
 
-        //Vector2 point = currentPoint.position - transform.position;
-        //if(Vector2.Distance(transform.position, PointB.transform.position) < 0.1f)
-        //{
-        //    rb.velocity = new Vector2(speed, 0);
-        //}
-        //else
-        //{
-        //    rb.velocity = new Vector2(-speed, 0);
-        //}
-
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointB.transform)
+        // Check if the animal is close to the target point
+        if (!isWaiting && Vector2.Distance(transform.position, currentTarget.position) < 0.3f)
         {
-            flip();
-            currentPoint = PointA.transform;
-        }
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointA.transform)
-        {
-            flip();
-            currentPoint = PointB.transform;
+            StartCoroutine(ChangeDirection());
         }
     }
 
-    private void flip()
+    IEnumerator ChangeDirection()
     {
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
+        randomTime = rnd.Next(1, 4);
+
+        isWaiting = true; // Prevent multiple coroutine calls
+        rb.velocity = Vector2.zero; // Stop movement while waiting
+
+        yield return new WaitForSeconds(randomTime); // Adjust wait time as needed
+
+        // Swap direction and target point
+        if (currentTarget == PointA.transform)
+        {
+            currentTarget = PointB.transform;
+            dir = -1;
+        }
+        else
+        {
+            currentTarget = PointA.transform;
+            dir = 1;
+        }
+
+        flip(); // Flip the sprite
+
+        isWaiting = false; // Resume movement
+    }
+
+    void flip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1; // Flip the sprite by inverting scale.x
+        transform.localScale = scale;
     }
 
     private void OnDrawGizmos()
