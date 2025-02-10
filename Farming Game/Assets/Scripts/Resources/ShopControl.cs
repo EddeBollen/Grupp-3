@@ -5,15 +5,21 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
-public class ShopControl : MonoBehaviour
+public class BuyItem : MonoBehaviour
 {
     int moneyAmount;
     int isAxeSold;
+    int isSeedSold;
+
 
     public Text moneyAmountText;
     public Text axePrice;
+    public Text seedPrice;
 
-    public Button buyButton;
+
+
+    public Button buyButtonAxe;
+    public Button buyButtonSeed;
 
     void Start()
     {
@@ -28,17 +34,31 @@ public class ShopControl : MonoBehaviour
 
         if (moneyAmount > 50 && isAxeSold == 0)
         {
-            buyButton.interactable = true;
+            buyButtonAxe.interactable = true;
         }
 
+        isSeedSold = PlayerPrefs.GetInt("isSeedSold");
+
+        if (moneyAmount > 10 && isSeedSold == 0)
+        {
+            buyButtonSeed.interactable = true;
+        }
     }
     public void buyAxe()
     {
         moneyAmount -= 50;
         PlayerPrefs.SetInt("IsAxeSold", 1);
         axePrice.text = "Sold";
-        buyButton.gameObject.SetActive(false);
+        buyButtonAxe.gameObject.SetActive(false);
     }
+    public void buySeed()
+    {
+        moneyAmount -= 10;
+        PlayerPrefs.SetInt("IsSeedSold", 1);
+        seedPrice.text = "Sold";
+        buyButtonSeed.gameObject.SetActive(false);
+    }
+
 
     public void exitShop()
     {
