@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour
     {
         float targetSize;
 
-        if (Input.GetKey(KeyCode.LeftShift) && movementScript.currentStamina > 1)
+        if (Input.GetKey(KeyCode.LeftShift) && movementScript.currentSpeed == movementScript.sprintSpeed)
         {
             targetSize = zoomedSize;
         }

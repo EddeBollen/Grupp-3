@@ -8,21 +8,22 @@ using UnityEngine.InputSystem;
 public class MovementScript : MonoBehaviour
 {
     Vector2 moveInput;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
-    [SerializeField] float moveSpeed = 3f;
-    [SerializeField] float sprintSpeed = 5f;
-    [SerializeField] float staminaRegenRate = 1f;
+    [SerializeField] public float moveSpeed = 3f;
+    [SerializeField] public float sprintSpeed = 5f;
+    [SerializeField] float staminaRegenRate = 0.5f;
     [SerializeField] float staminaDrainRate = 1f;
     [SerializeField] float maxStamina = 7;
-    bool isSprinting;
-    float currentSpeed;
+    [SerializeField] public float currentSpeed;
     public float currentStamina;
-    
+    public bool isSprinting;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentStamina = maxStamina;
+        Debug.Log("Press Shift to start");
     }
 
     void OnMove(InputValue value)
@@ -33,10 +34,15 @@ public class MovementScript : MonoBehaviour
     {
         if (currentStamina < 1)
         {
-            currentSpeed = moveSpeed;
+            isSprinting = false;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 1)
+        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && isSprinting)
+        {
+            isSprinting = true;
+            currentStamina -= staminaDrainRate * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 2)
         {
             isSprinting = true;
             currentStamina -= staminaDrainRate * Time.deltaTime;
@@ -47,21 +53,11 @@ public class MovementScript : MonoBehaviour
             currentStamina += staminaRegenRate * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            isSprinting = true;
-        }
-        else
-        {
-            isSprinting = false;
-        }
-
         currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
 
-
-        if (isSprinting)
+        if ((isSprinting) && currentStamina > 1)
         {
-            currentSpeed = moveSpeed;
+            currentSpeed = sprintSpeed;
         } 
         else if (currentStamina < maxStamina * 0.2f)
         {

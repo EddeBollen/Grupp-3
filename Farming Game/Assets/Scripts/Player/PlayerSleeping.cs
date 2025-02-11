@@ -1,60 +1,83 @@
-//using UnityEngine;
-//using UnityEngine.InputSystem;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
-//public class SleepSystem : MonoBehaviour
-//{
-//    public float sleepDuration = 5f;
-//    public Transform bedPosition;   
-//    private bool isSleeping = false;
 
-//    private GameObject player;
-//    private CharacterController playerController; 
+public class SleepSystem : MonoBehaviour
+{
+    public float sleepDuration = 5f;
+    public Transform bedPosition;
+    private bool isSleeping = false;
+    private bool isInBed = false;
 
-//    void Start()
-//    {
-//        player = GameObject.FindGameObjectWithTag("Player");
-//        if (player != null)
-//        {
-//            playerController = player.GetComponent<CharacterController>();
-//        }
-//    }
+    private GameObject player;
+    private Rigidbody2D rb;
+    private CharacterController playerController;
 
-//    void OnTriggerEnter(Collider other)
-//    {
-//        if (other.CompareTag("Player") && !isSleeping)
-//        {
-//            Debug.Log("Press E to sleep");
-//        }
-//    }
-//    void OnInteract(InputValue value)
-//    {
-//        StartCoroutine(Sleep());
-//    }
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerController = player.GetComponent<CharacterController>();
+        }
+    }
 
-//    IEnumerator Sleep()
-//    {
-//        isSleeping = true;
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bed") && !isSleeping)
+        {
+            Debug.Log("Press E to sleep");
+            isInBed = true;
+        }
+    }
 
-//        if (bedPosition != null)
-//        {
-//            player.transform.position = bedPosition.position;
-//        }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Bed"))
+        {
+            Debug.Log("Player left the bed");
+            isInBed = false;
 
-//        if (playerController != null)
-//        {
-//            playerController.enabled = false;
-//        }
+        }
+    }
+    void OnInteract(InputValue value)
+    {
+        if (isInBed && !isSleeping)
+        { 
+            StartCoroutine(Sleep());
+        }
+    }
 
-//        Debug.Log("Player is sleeping");
+    IEnumerator Sleep()
+    {
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        GameObject Bed = GameObject.FindGameObjectWithTag("Bed");
+        isSleeping = true;
+         
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+        
+        Player.transform.position = Bed.transform.position;
+        rb = GetComponent<Rigidbody2D>();
+        Debug.Log("Player is sleeping");
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        rb.constraints |= RigidbodyConstraints2D.FreezeRotation;
 
-//        yield return new WaitForSeconds(sleepDuration);
+        yield return new WaitForSeconds(sleepDuration);
 
-//        Debug.Log("Player woke up");
-//        isSleeping = false;
+        rb.constraints = RigidbodyConstraints2D.None;
+        Debug.Log("Player woke up");
+        isSleeping = false;
 
-//        if (playerController != null)
-//        {
-//            playerController.enabled = true;
-//        }
-//    }
-//}
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+        }
+    }
+}
