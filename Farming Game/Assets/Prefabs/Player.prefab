@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7097328591229999403}
   - component: {fileID: -1503425314689191234}
   - component: {fileID: 4721761041104056563}
-  - component: {fileID: 4375511571001907815}
+  - component: {fileID: 7765428912881009893}
   - component: {fileID: 8666382827905090372}
   - component: {fileID: 8876870154950550741}
   m_Layer: 0
@@ -117,7 +117,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &7097328591229999403
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -177,6 +177,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   sprintSpeed: 9
+  staminaRegenRate: 1
+  staminaDrainRate: 1
+  maxStamina: 7
+  currentStamina: 0
 --- !u!114 &4721761041104056563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,8 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 2
-  item: {fileID: 0}
---- !u!114 &4375511571001907815
+--- !u!114 &7765428912881009893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,7 +203,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1015379970649059299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3ad32198e8d2ba41abbd9a99426023f, type: 3}
+  m_Script: {fileID: 11500000, guid: 60570a3f1b6a6c8409c3c17e31caf610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gridSystem: {fileID: 0}

@@ -6,15 +6,20 @@ using UnityEngine;
 
 public class AnimalProduction : MonoBehaviour
 {
-    public TextMeshPro textLabel;
+    public TextMeshPro pigMushroom;
 
     bool isProducing = false;
 
-    int produced = 0;
+    int pigMushroomProduced = 0;
+
+    public int GetPigMushrooms()
+    {
+        return pigMushroomProduced;
+    }
 
     void Start()
     {
-        textLabel.text = produced.ToString();
+        pigMushroom.text = pigMushroomProduced.ToString();
     }
 
     void Update()
@@ -31,8 +36,8 @@ public class AnimalProduction : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        produced++;
-        textLabel.text = produced.ToString();
+        pigMushroomProduced++;
+        pigMushroom.text = pigMushroomProduced.ToString();
 
         isProducing = false;
     }
