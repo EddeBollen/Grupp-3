@@ -63,7 +63,7 @@ public class BuyItem : MonoBehaviour
     public void exitShop()
     {
         PlayerPrefs.SetInt("MoneyAmount", moneyAmount);
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Gameplay");
     }
    
 }
