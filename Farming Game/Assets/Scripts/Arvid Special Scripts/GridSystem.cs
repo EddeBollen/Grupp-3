@@ -10,9 +10,13 @@ public class GridSystem : MonoBehaviour
     public Vector3 gridPosition;
     public Vector2 mousePos;
     public float gridDistance;
-    [SerializeField] public GameObject playerObject;
+    public GameObject playerObject;
     public Collider2D hovering;
 
+    private void Start()
+    {
+        playerObject = GameObject.FindWithTag("Player");
+    }
     public Vector3 CalcGrid(Vector3 instance)
     {
         gridPosition = new Vector3(Mathf.Round(instance.x), Mathf.Round(instance.y), -1f);

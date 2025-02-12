@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class MovementScript : MonoBehaviour
 {
     Vector2 moveInput;
     Rigidbody2D rb;

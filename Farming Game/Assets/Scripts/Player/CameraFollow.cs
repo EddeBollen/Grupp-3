@@ -13,16 +13,6 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        float targetSize;
-
-        if (Input.GetKey(KeyCode.LeftShift) && movementScript.currentStamina > 1)
-        {
-            targetSize = zoomedSize;
-        }
-        else
-        {
-            targetSize = normalSize;
-        }
-        virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(virtualCamera.m_Lens.OrthographicSize, targetSize, zoomSpeed * Time.deltaTime);
+        virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(virtualCamera.m_Lens.OrthographicSize, 5f, zoomSpeed * Time.deltaTime);
     }
 }

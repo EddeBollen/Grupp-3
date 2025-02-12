@@ -7,7 +7,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public GridSystem gridSystem;
+    GameObject gameController;
+    GridSystem gridSystem;
+
+    private void Start()
+    {
+        gameController = GameObject.FindWithTag("GameController");
+        gridSystem = gameController.GetComponent<GridSystem>();
+    }
 
     void OnInteract()
     {
@@ -30,7 +37,7 @@ public class PlayerInteract : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (item.type == ItemType.BuildingBlock)
+            if (item.type == ItemType.BuildingBlock && !Physics2D.OverlapPoint(gridSystem.CalcGrid(gridSystem.mousePos)))
             {
                 Instantiate(item.gameObject, gridSystem.CalcGrid(gridSystem.mousePos), Quaternion.identity);
             }
