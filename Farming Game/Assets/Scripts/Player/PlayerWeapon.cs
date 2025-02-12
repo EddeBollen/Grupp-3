@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    private GameObject attackArea = default;
+    private GameObject Animal = default;
     private bool attacking = false;
 
     private float timeToAttack = 0.25f;
@@ -12,7 +12,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void Start()
     {
-        attackArea = transform.GetChild(0).gameObject;
+        Animal = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class PlayerWeapon : MonoBehaviour
             {
                 timer = 0;
                 attacking = false;
-                attackArea.SetActive(attacking);
+                Animal.SetActive(attacking);
             }
         }
     }
@@ -38,6 +38,6 @@ public class PlayerWeapon : MonoBehaviour
     private void attack()
     {
         attacking = true;
-        attackArea.SetActive(attacking);
+        Animal.SetActive(attacking);
     }
 }
