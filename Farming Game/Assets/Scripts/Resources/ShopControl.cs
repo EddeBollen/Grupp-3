@@ -10,16 +10,19 @@ public class BuyItem : MonoBehaviour
     int moneyAmount;
     int isAxeSold;
     int isSeedSold;
+    int isPickaxeSold;
 
 
     public Text moneyAmountText;
     public Text axePrice;
     public Text seedPrice;
+    public Text pickaxePrice;
 
 
 
     public Button buyButtonAxe;
     public Button buyButtonSeed;
+    public Button buyButtonPickaxe;
 
     void Start()
     {
@@ -43,6 +46,13 @@ public class BuyItem : MonoBehaviour
         {
             buyButtonSeed.interactable = true;
         }
+
+        isPickaxeSold = PlayerPrefs.GetInt("isPickaxeSold");
+
+        if (moneyAmount > 75 && isPickaxeSold == 0)
+        {
+            buyButtonPickaxe.interactable = true;
+        }
     }
     public void buyAxe()
     {
@@ -58,12 +68,19 @@ public class BuyItem : MonoBehaviour
         seedPrice.text = "Sold";
         buyButtonSeed.gameObject.SetActive(false);
     }
+    public void buyPickaxe()
+    {
+        moneyAmount -= 70;
+        PlayerPrefs.SetInt("IsPickaxeSold", 1);
+        pickaxePrice.text = "Sold";
+        buyButtonPickaxe.gameObject.SetActive(false);
+    }
 
 
     public void exitShop()
     {
         PlayerPrefs.SetInt("MoneyAmount", moneyAmount);
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Gameplay");
     }
    
 }
