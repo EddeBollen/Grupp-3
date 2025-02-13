@@ -18,10 +18,12 @@ public class MovementScript : MonoBehaviour
     [SerializeField] public float currentSpeed;
     public float currentStamina;
     public bool isSprinting;
+    Animator ani;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
         currentStamina = maxStamina;
         Debug.Log("Press Shift to start");
     }
@@ -32,6 +34,15 @@ public class MovementScript : MonoBehaviour
     }
     void Update()
     {
+        //if (moveInput.x != 0)
+        //{
+        //    ani.SetBool("isRunning", true);
+        //}
+        //else
+        //{
+        //    ani.SetBool("isRunning", false);
+        //}
+            
         if (currentStamina < 1)
         {
             isSprinting = false;

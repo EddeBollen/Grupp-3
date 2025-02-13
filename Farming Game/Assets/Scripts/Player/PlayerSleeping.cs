@@ -8,11 +8,12 @@ using UnityEngine.InputSystem;
 
 public class SleepSystem : MonoBehaviour
 {
+    public GameObject dayNightCycle;
+    public DayNightCycle dayAndNight;
     public float sleepDuration = 5f;
     public Transform bedPosition;
-    private bool isSleeping = false;
+    public bool isSleeping = false;
     private bool isInBed = false;
-
     private GameObject player;
     private Rigidbody2D rb;
     private CharacterController playerController;
@@ -46,14 +47,15 @@ public class SleepSystem : MonoBehaviour
     }
     void OnInteract(InputValue value)
     {
-        if (isInBed && !isSleeping)
-        { 
+        if (isInBed && !isSleeping && dayNightCycle.GetComponent<DayNightCycle>().isNight)
+        {
             StartCoroutine(Sleep());
         }
     }
 
     IEnumerator Sleep()
     {
+        Debug.Log("Player is sleeping");
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         GameObject Bed = GameObject.FindGameObjectWithTag("Bed");
         isSleeping = true;
@@ -65,12 +67,16 @@ public class SleepSystem : MonoBehaviour
         
         Player.transform.position = Bed.transform.position;
         rb = GetComponent<Rigidbody2D>();
-        Debug.Log("Player is sleeping");
+        
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         rb.constraints |= RigidbodyConstraints2D.FreezeRotation;
 
         yield return new WaitForSeconds(sleepDuration);
 
+        if (dayNightCycle != null)
+        {
+            dayNightCycle.GetComponent<DayNightCycle>().SetDayTime();
+        }
         rb.constraints = RigidbodyConstraints2D.None;
         Debug.Log("Player woke up");
         isSleeping = false;
