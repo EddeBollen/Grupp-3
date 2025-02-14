@@ -34,15 +34,15 @@ public class MovementScript : MonoBehaviour
     }
     void Update()
     {
-        //if (moveInput.x != 0)
-        //{
-        //    ani.SetBool("isRunning", true);
-        //}
-        //else
-        //{
-        //    ani.SetBool("isRunning", false);
-        //}
-            
+        if (moveInput.y != 0)
+        {
+            ani.SetBool("isRunning", true);
+        }
+        else
+        {
+            ani.SetBool("isRunning", false);
+        }
+
         if (currentStamina < 1)
         {
             isSprinting = false;

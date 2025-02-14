@@ -11,18 +11,21 @@ public class BuyItem : MonoBehaviour
     int isAxeSold;
     int isSeedSold;
     int isPickaxeSold;
+    int isCanSold;
 
 
     public Text moneyAmountText;
     public Text axePrice;
     public Text seedPrice;
     public Text pickaxePrice;
+    public Text canPrice;
 
 
 
     public Button buyButtonAxe;
     public Button buyButtonSeed;
     public Button buyButtonPickaxe;
+    public Button buyButtonCan;
 
     void Start()
     {
@@ -53,6 +56,13 @@ public class BuyItem : MonoBehaviour
         {
             buyButtonPickaxe.interactable = true;
         }
+
+        isCanSold = PlayerPrefs.GetInt("isCanSold");
+
+        if (moneyAmount > 25 && isCanSold == 0)
+        {
+            buyButtonCan.interactable = true;
+        }
     }
     public void buyAxe()
     {
@@ -70,10 +80,17 @@ public class BuyItem : MonoBehaviour
     }
     public void buyPickaxe()
     {
-        moneyAmount -= 70;
+        moneyAmount -= 75;
         PlayerPrefs.SetInt("IsPickaxeSold", 1);
         pickaxePrice.text = "Sold";
         buyButtonPickaxe.gameObject.SetActive(false);
+    }
+    public void buyCan()
+    {
+        moneyAmount -= 25;
+        PlayerPrefs.SetInt("IsCanSold", 1);
+        canPrice.text = "Sold";
+        buyButtonCan.gameObject.SetActive(false);
     }
 
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e7b352acdaf106646a83282dd8ded6bd
+guid: 0aeac02ffc9728a459d82fe77035c9d0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_front_farmgame_0
+      name: animals_game_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 32
-        height: 64
+        y: 61
+        width: 65
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,41 +111,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db45027551f37734abe8d7b9f4ea73ca
-      internalID: -476475743
+      spriteID: 7c95cc792c4828f408ac6efb0e99b1d0
+      internalID: -1990706527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_front_farmgame_1
+      name: animals_game_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
+        x: 79
+        y: 32
+        width: 81
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 15, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88c1426bba75ff247a8dc9a843cdfab6
-      internalID: 583805812
+      spriteID: 4f7e9d94ee88a48479785b2699f2785b
+      internalID: -116948856
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_front_farmgame_2
+      name: animals_game_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 142
         y: 0
-        width: 32
-        height: 64
+        width: 18
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,29 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33ac1750c1b88a64196610562c6a795f
-      internalID: 1337725124
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_front_farmgame_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5dc18db03913ed64b9a7a47c655e1da7
-      internalID: -2060494693
+      spriteID: 38abc96182d8df8459761e4c92b5826b
+      internalID: 681472247
       vertices: []
       indices: 
       edges: []
@@ -191,10 +170,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_front_farmgame_0: -476475743
-      Idle_front_farmgame_1: 583805812
-      Idle_front_farmgame_2: 1337725124
-      Idle_front_farmgame_3: -2060494693
+      animals_game_0: -1990706527
+      animals_game_1: -116948856
+      animals_game_2: 681472247
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
