@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 44168224}
   - component: {fileID: 44168223}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Pig Mushrooms Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -717,9 +717,16 @@ PrefabInstance:
       objectReference: {fileID: 995486571}
     m_RemovedComponents:
     - {fileID: 4721761041104056563, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
+    - {fileID: 4375511571001907815, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1015379970649059299, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1015379971109951269}
+    - targetCorrespondingSourceObject: {fileID: 1015379970649059299, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 1015379971109951268}
   m_SourcePrefab: {fileID: 100100000, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
 --- !u!1 &695543453
 GameObject:
@@ -1053,7 +1060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169c07dba34e8c545978cdebf99be5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pigMushrooms: 0
 --- !u!1 &1393055132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1451,7 @@ GameObject:
   - component: {fileID: 1812573699}
   - component: {fileID: 1812573698}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Money Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1773,6 +1779,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1015379970649059299, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
   m_PrefabInstance: {fileID: 614168769}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1015379971109951268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015379971109951266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b02f8851a4f7e64bacd5a3429113ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1015379971109951269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015379971109951266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60570a3f1b6a6c8409c3c17e31caf610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSystem: {fileID: 995486571}
+  pigMushroomsTextObject: {fileID: 44168221}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

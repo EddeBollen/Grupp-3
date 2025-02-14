@@ -5,7 +5,6 @@ using UnityEngine.InputSystem; // Required for new Input System
 public class PlayerPlant : MonoBehaviour
 {
     [SerializeField] float cooldown = 2;
-    
 
     GameObject _plantObject;
     
