@@ -51,7 +51,7 @@ public class DayNightCycle : MonoBehaviour
     {
         while (true)
         {
-            yield return FadeToBlack(10f);
+            yield return FadeToBlack(120f);
             yield return new WaitForSeconds(timeBeforeFadeBack);
             yield return FadeToClear();
         }
