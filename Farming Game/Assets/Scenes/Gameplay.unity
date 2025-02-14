@@ -863,7 +863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 213292057}
   - component: {fileID: 213292056}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5513,7 +5513,7 @@ GameObject:
   - component: {fileID: 1732677820}
   - component: {fileID: 1732677822}
   - component: {fileID: 1732677821}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GrassTileMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12126,7 +12126,7 @@ GameObject:
   - component: {fileID: 1878086132}
   - component: {fileID: 1878086131}
   - component: {fileID: 1878086130}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Animal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
