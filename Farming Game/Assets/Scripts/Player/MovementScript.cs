@@ -1,54 +1,59 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.Rendering.DebugUI;
 
 public class MovementScript : MonoBehaviour
 {
     Vector2 moveInput;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
-    [SerializeField] float moveSpeed = 3f;
-    [SerializeField] float sprintSpeed = 5f;
-    [SerializeField] float maxStamina = 7f;
+    [SerializeField] public float moveSpeed = 3f;
+    [SerializeField] public float sprintSpeed = 5f;
+    [SerializeField] float staminaRegenRate = 0.5f;
     [SerializeField] float staminaDrainRate = 1f;
-    [SerializeField] float staminaRegenRate = 1f;
-  
-    bool isSprinting;
+    [SerializeField] float maxStamina = 7;
+    [SerializeField] public float currentSpeed;
     public float currentStamina;
-    float currentSpeed;
-   
+    public bool isSprinting;
+    Animator ani;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
         currentStamina = maxStamina;
+        Debug.Log("Press Shift to start");
     }
 
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
-
-    private void Update()
+    void Update()
     {
-        if (isSprinting)
+        if (moveInput.y != 0)
         {
-            currentSpeed = sprintSpeed;
+            ani.SetBool("isRunning", true);
         }
         else
         {
-            currentSpeed = moveSpeed;
+            ani.SetBool("isRunning", false);
         }
 
         if (currentStamina < 1)
         {
-            currentSpeed = moveSpeed;
+            isSprinting = false;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && isSprinting)
+        {
+            isSprinting = true;
+            currentStamina -= staminaDrainRate * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 2)
         {
             isSprinting = true;
             currentStamina -= staminaDrainRate * Time.deltaTime;
@@ -59,21 +64,26 @@ public class MovementScript : MonoBehaviour
             currentStamina += staminaRegenRate * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+
+        if ((isSprinting) && currentStamina > 1)
         {
-            isSprinting = true;
+            currentSpeed = sprintSpeed;
+        } 
+        else if (currentStamina < maxStamina * 0.2f)
+        {
+            Debug.Log("Stamina is running low");
+        }
+        else if (currentStamina == maxStamina)
+        {
+            Debug.Log("Stamina is full");
         }
         else
         {
-            isSprinting = false;
+            Debug.Log("stamina is left");
+            currentSpeed = moveSpeed;
         }
 
-        currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
         rb.velocity = moveInput * currentSpeed;
-        
-        if (currentStamina == 0)
-        {
-            Debug.Log("stamina was drained!");
-        }
     }
 }

@@ -6,19 +6,23 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int health = 100;
 
-    private int MaxHealth = 100;
+    int maxHealth = 100;
+    public int currentHealth = 100;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Damage(100);
+            Damage(50);
         }
     }
     public void Damage(int amount)
     {
         if(amount < 0)
         {
-            throw new System.ArgumentOutOfRangeException();
+            Debug.Log("Animal Dead");
+        } else
+        {
+            currentHealth = -50;
         }
     }
 }

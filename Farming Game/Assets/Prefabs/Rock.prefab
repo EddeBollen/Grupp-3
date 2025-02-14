@@ -143,5 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c98fac4db958443b18627c3c7f5589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSystem: {fileID: 0}
-  hits: 0
+  gridSystem: {fileID: 1603648734953104183, guid: 1d93f5d6827fb644fb11dd7a312591a2, type: 3}
+  hits: 3
