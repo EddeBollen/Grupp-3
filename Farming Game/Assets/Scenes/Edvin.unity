@@ -18307,6 +18307,7 @@ GameObject:
   - component: {fileID: 960939252}
   - component: {fileID: 960939253}
   - component: {fileID: 960939254}
+  - component: {fileID: 960939255}
   m_Layer: 0
   m_Name: Camera follow
   m_TagString: Untagged
@@ -18352,7 +18353,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1215484850}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 7.7
+    OrthographicSize: 4.61
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -18385,7 +18386,23 @@ MonoBehaviour:
   virtualCamera: {fileID: 960939253}
   normalSize: 5
   zoomedSize: 5.5
-  zoomSpeed: 10
+  zoomSpeed: 5
+--- !u!114 &960939255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960939251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BoundingShape2D: {fileID: 1418168444}
+  m_Damping: 0.5
+  m_MaxWindowSize: -1
+  m_Padding: 0
 --- !u!1 &964679551
 GameObject:
   m_ObjectHideFlags: 0
@@ -21627,6 +21644,7 @@ Transform:
   m_Children:
   - {fileID: 1295642370}
   - {fileID: 960939252}
+  - {fileID: 1418168443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1098113670
@@ -24695,6 +24713,23 @@ MonoBehaviour:
   sleepDuration: 5
   bedPosition: {fileID: 2034575824}
   isSleeping: 0
+--- !u!114 &1215484863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215484825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388c331d92088c54ea0b9f36f6b0da8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementScript: {fileID: 1215484834}
+  virtualCamera: {fileID: 960939253}
+  normalSize: 5
+  zoomedSize: 8
+  zoomSpeed: 5
 --- !u!1 &1215657303
 GameObject:
   m_ObjectHideFlags: 0
@@ -26708,7 +26743,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.7
+  orthographic size: 4.61
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -26734,7 +26769,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.6820436, y: 0.24594024, z: -0.039553642}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.68, y: 0.68, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1096353767}
@@ -28785,6 +28820,94 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1418168441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1418168443}
+  - component: {fileID: 1418168444}
+  m_Layer: 0
+  m_Name: Border
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1418168443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418168441}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: 0.9, z: -0.018104553}
+  m_LocalScale: {x: 0.93, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1096353767}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1418168444
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418168441}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -14.818104, y: -8.155135}
+      - {x: 17.016712, y: -8.035204}
+      - {x: 19.345858, y: -8.026429}
+      - {x: 19.534258, y: -4.828838}
+      - {x: 19.325373, y: 1.141923}
+      - {x: 19.57684, y: 6.7099524}
+      - {x: 19.576841, y: 7.712634}
+      - {x: 17.260805, y: 7.8240433}
+      - {x: 17.26331, y: 7.974922}
+      - {x: 17.253223, y: 7.975583}
+      - {x: -14.980529, y: 7.8948927}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1421276390
 GameObject:
   m_ObjectHideFlags: 0
@@ -39889,7 +40012,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 590816576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39952,7 +40075,7 @@ MonoBehaviour:
   blackScreen: {fileID: 1887637730}
   fadeDuration: 1
   targetFade: 0.85
-  timeBeforeFadeBack: 120
+  timeBeforeFadeBack: 10
   isNight: 0
 --- !u!1 &1894874871
 GameObject:
@@ -44770,6 +44893,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1015379970649059299, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1215484857}
+    - targetCorrespondingSourceObject: {fileID: 1015379970649059299, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1215484863}
     - targetCorrespondingSourceObject: {fileID: 1015379970649059299, guid: 8ed64866f4a76404ba2261b7eef9644a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1215484845}
